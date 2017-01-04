@@ -15,10 +15,11 @@ render(
   <AppContainer>
     <App store={store} />
   </AppContainer>,
-  mountApp
+  mountApp // Looks like this is a dom element as the second argument
 );
 
 // For hot reloading of react components
+// module keyword also used in module.exports
 if (module.hot) {
   module.hot.accept('./App', () => {
     // If you use Webpack 2 in ES modules mode, you can

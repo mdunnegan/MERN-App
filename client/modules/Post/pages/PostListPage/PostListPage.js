@@ -7,7 +7,7 @@ import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget
 
 // Import Actions
 import { addPostRequest, fetchPosts, deletePostRequest } from '../../PostActions';
-import { toggleAddPost } from '../../../App/AppActions';
+import { toggleAddPost, toggleEditPost } from '../../../App/AppActions';
 
 // Import Selectors
 import { getShowAddPost } from '../../../App/AppReducer';
@@ -29,11 +29,16 @@ class PostListPage extends Component {
     this.props.dispatch(addPostRequest({ name, title, content }));
   };
 
+  handleEditPost = post => {
+    //console.log('RADICAL: ' + post);
+    this.props.dispatch(toggleEditPost(post));
+  }
+
   render() {
     return (
       <div>
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
-        <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
+        <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} handleEditPost={this.handleEditPost} />
       </div>
     );
   }
@@ -57,6 +62,7 @@ PostListPage.propTypes = {
     content: PropTypes.string.isRequired,
   })).isRequired,
   showAddPost: PropTypes.bool.isRequired,
+  // showEditPost: PropTypes.number.isRequired, // Not sure where exactly this needs to be included...
   dispatch: PropTypes.func.isRequired,
 };
 

@@ -16,6 +16,12 @@ export class PostCreateWidget extends Component {
   };
 
   render() {
+    // Strings surrounded with `` are template literals.
+    // Items within ${} get interpoloated
+    // Takeaway:
+    // cls is either 'PostCreateWidget__form__1HNvX' or 'PostCreateWidget__form__1HNvX styles.appear'
+    // clever way of hiding an element
+
     const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
     return (
       <div className={cls}>

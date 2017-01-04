@@ -25,7 +25,9 @@ export class App extends Component {
   }
 
   toggleAddPostSection = () => {
+    // This will send something to the store
     this.props.dispatch(toggleAddPost());
+    // The AppReducer.js finishes, something else picks up on the state change...
   };
 
   render() {

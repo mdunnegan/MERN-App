@@ -3,9 +3,16 @@ import { ADD_POST, ADD_POSTS, DELETE_POST } from './PostActions';
 // Initial State
 const initialState = { data: [] };
 
+// The reducer takes two parameters: An action, and a next state.
+// The reducer applies the given action to that state, and returns the desired next state.
+
+// Redux will call our reducer with an undefined state for the first time
+
 const PostReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST :
+      // console.log('action');
+      // console.log(action);
       return {
         data: [action.post, ...state.data],
       };
