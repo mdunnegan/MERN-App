@@ -4,7 +4,6 @@ import { TOGGLE_ADD_POST, TOGGLE_EDIT_POST } from './AppActions';
 // Initial State
 const initialState = {
   showAddPost: false,
-  showEditPost: false,
 };
 
 // Reducers define how state changes when actions are called
@@ -16,7 +15,6 @@ const AppReducer = (state = initialState, action) => {
     case TOGGLE_ADD_POST:
       return {
         showAddPost: !state.showAddPost,
-        showEditPost: -1,
       };
       // returning state (no changes) instead of changing state disables form toggling
       // Also a good way of showing hotloading
@@ -26,7 +24,6 @@ const AppReducer = (state = initialState, action) => {
       //console.log(action);
       return {
         showAddPost: state.showAddPost,
-        showEditPost: 0,
       };
 
     default:

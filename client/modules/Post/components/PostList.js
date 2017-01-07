@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 // Import Components
-import PostListItem from './PostListItem/PostListItem';
+import { PostListItem } from './PostListItem/PostListItem';
 
 function PostList(props) {
   return (
@@ -12,7 +12,7 @@ function PostList(props) {
             post={post}
             key={post.cuid}
             onDelete={() => props.handleDeletePost(post.cuid)}
-            onEdit={() => props.handleEditPost(post.cuid)}
+            toggleEditPostSection={() => props.toggleEditPostSection(post)}
           />
         ))
       }
@@ -29,7 +29,7 @@ PostList.propTypes = {
     cuid: PropTypes.string.isRequired,
   })).isRequired,
   handleDeletePost: PropTypes.func.isRequired,
-  handleEditPost: PropTypes.func.isRequired,
+  toggleEditPostSection: PropTypes.func.isRequired,
 };
 
 export default PostList;

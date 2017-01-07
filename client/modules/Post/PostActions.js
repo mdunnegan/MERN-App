@@ -4,6 +4,8 @@ import callApi from '../../util/apiCaller';
 export const ADD_POST = 'ADD_POST';
 export const ADD_POSTS = 'ADD_POSTS';
 export const DELETE_POST = 'DELETE_POST';
+export const TOGGLE_EDIT_POST_SECTION = 'TOGGLE_EDIT_POST_SECTION';
+export const CREATE_TOGGLE_EDIT_POST_LIST = 'CREATE_TOGGLE_EDIT_POST_LIST';
 
 // Export Actions (these are really 'Action Creators')
 export function addPost(post) {
@@ -52,6 +54,7 @@ export function fetchPosts() {
   return (dispatch) => {
     return callApi('posts').then(res => {
       dispatch(addPosts(res.posts));
+      dispatch(createToggleEditPostList(res.posts));
     });
   };
 }
@@ -60,6 +63,20 @@ export function fetchPost(cuid) {
   return (dispatch) => {
     return callApi(`posts/${cuid}`).then(res => dispatch(addPost(res.post)));
   };
+}
+
+export function createToggleEditPostList(post) {
+  return {
+    type: CREATE_TOGGLE_EDIT_POST_LIST,
+    post: post
+  }
+}
+
+export function toggleEditPostSection(post) {
+  return {
+    type: TOGGLE_EDIT_POST_SECTION,
+    post: post
+  }
 }
 
 export function deletePost(cuid) {
