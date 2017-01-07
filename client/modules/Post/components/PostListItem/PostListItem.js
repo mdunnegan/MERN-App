@@ -1,6 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
+import { toggleEditPostSection } from '../../PostActions';
+
+import { getShowEditPostSection } from '../../PostReducer';
 
 // Import Style
 import styles from './PostListItem.css';
