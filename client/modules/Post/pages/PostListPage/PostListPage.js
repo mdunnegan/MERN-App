@@ -6,8 +6,8 @@ import PostList from '../../components/PostList';
 import PostCreateWidget from '../../components/PostCreateWidget/PostCreateWidget';
 
 // Import Actions
-import { addPostRequest, fetchPosts, deletePostRequest } from '../../PostActions';
-import { toggleAddPost, toggleEditPost } from '../../../App/AppActions';
+import { addPostRequest, fetchPosts, deletePostRequest, toggleEditPostSection } from '../../PostActions';
+import { toggleAddPost } from '../../../App/AppActions';
 
 // Import Selectors
 import { getShowAddPost } from '../../../App/AppReducer';
@@ -29,16 +29,15 @@ class PostListPage extends Component {
     this.props.dispatch(addPostRequest({ name, title, content }));
   };
 
-  handleEditPost = post => {
-    //console.log('RADICAL: ' + post);
-    this.props.dispatch(toggleEditPost(post));
-  }
+  toggleEditPostSection = post => {
+    this.props.dispatch(toggleEditPostSection(post));
+  };
 
   render() {
     return (
       <div>
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
-        <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} handleEditPost={this.handleEditPost} />
+        <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} toggleEditPostSection={this.toggleEditPostSection} />
       </div>
     );
   }
